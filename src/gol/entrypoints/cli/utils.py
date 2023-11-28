@@ -1,10 +1,14 @@
+import os
+
 from art import text2art
 from tabulate import tabulate
 
-logo = text2art('G-O-L', font='tarty1')
+
+def get_centered_table(data) -> str:
+    return center(get_table(data))
 
 
-def get_table(data):
+def get_table(data) -> str:
     rows = []
     for record in data:
         rows.append([
@@ -17,3 +21,13 @@ def get_table(data):
         ['title', 'score', 'date'],
         'heavy_outline'
     )
+
+
+def center(text: str) -> str:
+    width = os.get_terminal_size()[0]
+    lines = text.split('\n')
+    return "\n".join(line.center(width) for line in lines)
+
+
+logo = center(text2art('G-O-L', font='tarty1'))
+

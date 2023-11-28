@@ -1,8 +1,9 @@
 import typer
 
 from gol.entrypoints.cli.utils import (
+    center,
     logo,
-    get_table,
+    get_centered_table,
 )
 from gol.service_layer import services
 from gol.service_layer.uow import SQLModelUnitOfWork
@@ -21,6 +22,8 @@ def add_action():
     except Exception as e:
         print(e)
         print('Error ocurred')
+    else:
+        print(center('Successfully added action!'))
 
 
 @app.command()
@@ -29,7 +32,7 @@ def weekly_actions():
     uow = SQLModelUnitOfWork()
     try:
         actions = services.weekly_actions(uow)
-        print(get_table(actions))
+        print(get_centered_table(actions))
     except Exception as e:
         print(e)
 
