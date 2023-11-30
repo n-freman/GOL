@@ -29,3 +29,11 @@ def weekly_actions(uow: AbstractUnitOfWork):
         )
         return actions
 
+
+def calc_last_week_total_score(uow: AbstractUnitOfWork):
+    actions = weekly_actions(uow)
+    total = 0
+    for action in actions:
+        total += action.score
+    return total
+
