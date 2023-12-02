@@ -41,4 +41,5 @@ to get full user documentation
 
 - add pdf output
 - add graphs to weekly output
+- rename presentation module into more convenient name
 
