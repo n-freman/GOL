@@ -8,7 +8,7 @@ from gol.service_layer.uow.abstract import AbstractUnitOfWork
 class SQLModelUnitOfWork(AbstractUnitOfWork):
 
     def __enter__(self):
-        self.session = db.Session(db.engine)
+        self.session = db.Session(db.engine, expire_on_commit=False)
         self.actions = ActionsAdapter(self.session)
 
     def __exit__(self, *args):
