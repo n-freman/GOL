@@ -24,6 +24,6 @@ class ActionsAdapter(AbstractAdapter):
         actions = self.session.query(Action).filter(
             (Action.date_added >= start_date)
             & (Action.date_added <= end_date)
-        )
+        ).order_by(Action.date_added.desc())
         return actions
 
