@@ -23,11 +23,11 @@ def add_action():
 
 
 @app.command()
-def weekly_actions():
+def current_week_actions():
     print(logo, '\n')
     uow = SQLModelUnitOfWork()
     try:
-        actions = services.weekly_actions(uow)
+        actions = services.current_week_actions(uow)
         print(get_centered_table(actions))
         print(center(
             f'\nTotal: {services.calc_last_week_total_score(uow)}'

@@ -18,7 +18,7 @@ def add_action(
         return action
 
 
-def weekly_actions(uow: AbstractUnitOfWork):
+def current_week_actions(uow: AbstractUnitOfWork):
     today = date.today()
     start_of_week = today - timedelta(days=today.weekday())
     end_of_week = start_of_week + timedelta(days=6)
@@ -31,7 +31,7 @@ def weekly_actions(uow: AbstractUnitOfWork):
 
 
 def calc_last_week_total_score(uow: AbstractUnitOfWork):
-    actions = weekly_actions(uow)
+    actions = current_week_actions(uow)
     total = 0
     for action in actions:
         total += action.score

@@ -23,10 +23,10 @@ def add_action(action: AddActionSchema):
     }
 
 
-@app.get('/weekly-actions', response_model=ActionListResponseSchema) 
-def weekly_actions():
+@app.get('/current-week-actions', response_model=ActionListResponseSchema) 
+def current_week_actions():
     uow = SQLModelUnitOfWork()
-    actions = services.weekly_actions(uow)
+    actions = services.current_week_actions(uow)
     total = services.calc_last_week_total_score(uow)
     return {'actions': list(actions), 'total_score': total}
 

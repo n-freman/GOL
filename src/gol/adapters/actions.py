@@ -27,3 +27,6 @@ class ActionsAdapter(AbstractAdapter):
         ).order_by(Action.date_added.desc())
         return actions
 
+    def weekly_score(self):
+        pass
+
